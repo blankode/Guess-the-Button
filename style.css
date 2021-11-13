@@ -7,3 +7,18 @@
     background-image: linear-gradient(white,pink,white);
     border-radius: 10px;
 }
+
+.button-bg {
+    background-image: radial-gradient(pink,white);
+    border: 1px solid;
+}
+
+.button-bg-wrong {
+    background-image: radial-gradient(pink,red);
+    border: 1px solid;
+}
+
+.button-bg-winner {
+    background-image: radial-gradient(pink,gold);
+    border: 1px solid;
+}
