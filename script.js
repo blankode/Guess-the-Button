@@ -14,7 +14,32 @@ function playEasyMode() {
     }
 }
 
+function playHardMode() {
+    var getAmount = prompt("Please enter the amount of doors you want to guess from:", "");
+    var doorAmount = parseInt(getAmount);
+    if (Number.isInteger(doorAmount)) {
+        console.log(doorAmount);
+        var winner = Math.floor(Math.random() * doorAmount);
+        ++winner;
+        const intro = document.getElementById("introduction");
+        intro.style.display = 'none';
+        let play = document.getElementById("playSpace");
+        play.innerHTML = `<h1>Guess the Door - Hard Mode</h1><br>`;
+        for (var i = 1; i <= doorAmount; ++i) {
+            play.innerHTML += `&nbsp&nbsp<button type="button" 
+            class="btn button-bg btn-lg position-relative" onclick="checkWinner(`+ i +`,`+ winner +`)" id="`+ i +`">
+            <i class="bi bi-door-closed"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark">`+ i +`</span>
+        </button>&nbsp&nbsp`;
+        }
+    } else {
+        alert("Something is wrong, can you try again?");
+    }
+
+}
+
 function checkWinner(id, winner) {
+    const intro = document.getElementById("introduction");
     if (id === winner) {
         let door = document.getElementById(id);
         door.innerHTML = `<i class="bi bi-door-open"></i>
@@ -22,6 +47,8 @@ function checkWinner(id, winner) {
         door.classList.replace("button-bg", "button-bg-winner");
         door.disabled = true;
         alert("Congratulations! You have found that door " + id + " is the right one!");
+        document.getElementById("playSpace").innerHTML = "";
+        intro.style.display = 'block';
     } else {
         let door = document.getElementById(id);
         door.innerHTML = `<i class="bi bi-door-open"></i>
