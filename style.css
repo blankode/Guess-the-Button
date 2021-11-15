@@ -6,6 +6,7 @@
 .card-bg {
     background-image: linear-gradient(white,pink,white);
     border-radius: 10px;
+    height: 190px;
 }
 
 .button-bg {

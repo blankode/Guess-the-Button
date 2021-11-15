@@ -1,5 +1,7 @@
+let winner;
+
 function playEasyMode() {
-    var winner = Math.floor(Math.random() * 3);
+    winner = Math.floor(Math.random() * 3);
     ++winner;
     const intro = document.getElementById("introduction");
     intro.style.display = 'none';
@@ -15,11 +17,11 @@ function playEasyMode() {
 }
 
 function playHardMode() {
-    var getAmount = prompt("Please enter the amount of doors you want to guess from:", "");
-    var doorAmount = parseInt(getAmount);
+    let getAmount = prompt("Please enter the amount of doors you want to guess from:", "");
+    let doorAmount = parseInt(getAmount);
     if (Number.isInteger(doorAmount)) {
         console.log(doorAmount);
-        var winner = Math.floor(Math.random() * doorAmount);
+        winner = Math.floor(Math.random() * doorAmount);
         ++winner;
         const intro = document.getElementById("introduction");
         intro.style.display = 'none';
@@ -27,7 +29,7 @@ function playHardMode() {
         play.innerHTML = `<h1>Guess the Door - Hard Mode</h1><br>`;
         for (var i = 1; i <= doorAmount; ++i) {
             play.innerHTML += `&nbsp&nbsp<button type="button" 
-            class="btn button-bg btn-lg position-relative" onclick="checkWinner(`+ i +`,`+ winner +`)" id="`+ i +`">
+            class="btn button-bg btn-lg position-relative" onclick="checkWinner(`+ i +`)" id="`+ i +`">
             <i class="bi bi-door-closed"></i>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-dark">`+ i +`</span>
         </button>&nbsp&nbsp`;
@@ -38,7 +40,7 @@ function playHardMode() {
 
 }
 
-function checkWinner(id, winner) {
+function checkWinner(id) {
     const intro = document.getElementById("introduction");
     if (id === winner) {
         let door = document.getElementById(id);
